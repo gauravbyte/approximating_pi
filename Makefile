@@ -56,7 +56,7 @@ WARNS := -Wall -Wextra -pedantic # -pedantic warns on language standards
 #DEBUG := -g3 -DDEBUG=1
 
 # Dependency libraries
-LIBS := -lm  #-I some/path/to/library
+LIBS := -lm  -lpthread#-I some/path/to/library
 
 
 
