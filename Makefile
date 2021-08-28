@@ -68,8 +68,7 @@ LIBS := -lm  -lpthread#-I some/path/to/library
 
 # %.o file names
 NAMES := $(notdir $(basename $(wildcard $(SRCDIR)/*.$(SRCEXT))))
-OBJECTS :=$(patsubst %,$(LIBDIR)/%.o,$(NAMES))
-
+OBJECTS :=
 
 #
 # COMPILATION RULES
@@ -82,10 +81,9 @@ help:
 	@echo "C Project Template"
 	@echo
 	@echo "Target rules:"
-	@echo "    all      - Compiles and generates binary file"
-	@echo "    tests    - Compiles with cmocka and run tests binary file"
+	@echo "    build : compile the source code and build the executable file from the objectfile.
+	@echo "    run : execute the code with command line arguments passed through the command line.
 	@echo "    start    - Starts a new project using C project template"
-	@echo "    valgrind - Runs binary file using valgrind tool"
 	@echo "    clean    - Clean the project by removing binaries"
 	@echo "    help     - Prints a help message with target rules"
 
@@ -102,7 +100,7 @@ start:
 
 
 # Rule for link and generate the binary file
-all: $(OBJECTS)
+all: 
 	@echo -en "$(BROWN)LD $(END_COLOR)";
 	$(CC) -o $(BINDIR)/$(BINARY) $+ $(DEBUG) $(CFLAGS) $(LIBS)
 	@echo -en "\n--\nBinary file placed at" \
@@ -112,17 +110,15 @@ all: $(OBJECTS)
 # Rule for object binaries compilation
 $(LIBDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@echo -en "$(BROWN)CC $(END_COLOR)";
-	$(CC) -c $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
+	$(CC)  $^ -o $@ $(DEBUG) $(CFLAGS) $(LIBS)
 
 
 # Rule for run valgrind tool
-run: $(OBJECTS)
-
-	$(CC) -o $(BINDIR)/$(BINARY) $+ $(LIBS)
-
-
-	./$(BINDIR)/$(BINARY) $(ARGS)
-	
+run:
+	gcc -o lib/integral.o src/integral.c -lpthread -lm
+	lib/./integral.o $(arg)
+	gcc -o lib/wallis.o src/wallis.c -lpthread -lm 
+	lib/./wallis.o  $(arg)
 
 
 # Compile tests and run the test binary
