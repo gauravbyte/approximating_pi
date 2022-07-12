@@ -11,6 +11,8 @@ long long iteration;
 double sum;
 const double micro = 1.0e-6;
 double GLOBAL_PI = 0.0;
+double times;
+double timep;
 pthread_mutex_t mutex;
 
 void Usage(char* prog_name);
@@ -60,6 +62,7 @@ void serial_integral()
     printf("serial execution \n");
     printf("pi calculated = %.15lf \n", pi);
     printf("time taken    = %lf \n",finish - start);
+    times = finish-start;
 }
 void *Parellel_integral(void *pArg){
            int thread_array = *((int *)pArg);
@@ -76,6 +79,7 @@ void *Parellel_integral(void *pArg){
 }
 int main(int argc, char* argv[])
 {
+    printf("accurate pi 3 . 1 4 1 5 9 2 6 5 3 5 8 9 7 9 3 \n");
     Get_args(argc, argv);
     serial_integral();
 
@@ -96,8 +100,10 @@ int main(int argc, char* argv[])
     }
     GLOBAL_PI *= 2.0;
     finish = calculateTime();
-    printf("pi calculated = %.15f\n", GLOBAL_PI );
-    printf("time taken    = %lf",finish-start);
+    printf("pi calculated = %.15f   \n", GLOBAL_PI );
+    printf("time taken    = %lf \n",finish-start);
+    timep = finish - start;
+    printf("speed up %lf \n",times/timep);
     pthread_mutex_destroy(&mutex);
     return 0;
     

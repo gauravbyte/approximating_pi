@@ -1,0 +1,18 @@
+commit 48943b5472e438e4d0550ef9643711aee7b49bc5 (HEAD -> master)
+Author: Gaurav Chaudhari <mcs212132@iitd.ac.in>
+Date:   Sat Aug 28 17:28:56 2021 +0530
+
+    wallis series implementation added
+
+commit b6a65b1d8b4de323329b173acba87628c8e9e263
+Author: Gaurav Chaudhari <mcs212132@iitd.ac.in>
+Date:   Fri Aug 27 17:38:08 2021 +0530
+
+    now implemented parellel implementation integral approximation of pi
+
+commit c336daf99d74e8c0dd7aaf0f539a8168dfd2ea32
+Author: Gaurav Chaudhari <mcs212132@iitd.ac.in>
+Date:   Thu Aug 26 15:27:16 2021 +0530
+
+    successfully ran serial method for approximating pi
+
